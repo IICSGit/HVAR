@@ -1,0 +1,83 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>1ESyIRJi4tciSrZ-gt-29031162-2022-06-06T21:55:30.84Z::pd.xml</types1:EntryId>
+      <types1:Name>p_main_gitpipeline</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
+      <types1:CreationDate>2022-06-06T21:55:31Z</types1:CreationDate>
+      <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-06T22:01:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
+      <types1:PublicationDate>2022-06-06T22:01:59Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p_main_gitpipeline/p_main_gitpipeline.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p_main_gitpipeline"
+                  name="p_main_gitpipeline"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_person" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowedUsers>
+                     <user>leonardo.vieira@latampartners-dev.org</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l439u1fx" targetId="l439u1fw"/>
+               </start>
+               <service id="l439u1fw">
+                  <title>get_pipeline</title>
+                  <serviceName>cn-pipeline:get_pipeline</serviceName>
+                  <serviceGUID>aVwr4auu76AdNY2M89qwQe</serviceGUID>
+                  <serviceInput>
+                     <parameter name="person" source="constant">{$input.in_person}</parameter>
+                  </serviceInput>
+                  <link id="l439u1fy" targetId="c"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>06797d01-3c22-46b8-af0c-fec2ab9e5fde</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>leonardo.vieira@latampartners-dev.org</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-06T21:59:18Z</ns1:CreationDate>
+               <ns1:ModifiedBy>leonardo.vieira@latampartners-dev.org</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-06-06T22:01:25Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	"in_person": "Teste"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>gCObPIbnDueiarTaacTGcd</types1:GUID>
+      <types1:DisplayName>p_main_gitpipeline</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-06-06T22:11:53.354Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
