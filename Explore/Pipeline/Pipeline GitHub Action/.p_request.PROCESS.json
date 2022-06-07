@@ -1,7 +1,7 @@
 {
   "objectInfo" : {
-    "id" : "21ns8h9gpaVjLPh1luw3ID",
-    "name" : "p_message_wc",
+    "id" : "0q4eWrOblmsf3OfxhmcH61",
+    "name" : "p_request",
     "type" : "PROCESS",
     "metadata" : {
       "modelVersion" : {
@@ -9,11 +9,11 @@
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "aaa-gt-11023026-2022-06-05T00:26:55.004Z::pd.xml"
+        "repoHandle" : "4Cf5GkeHy2uI5CU-gt-32784355-2022-06-07T15:04:37.891Z::pd.xml"
       },
       "contextAttributes" : null,
       "additionalInfo" : {
-        "description" : "descrição",
+        "description" : "",
         "contentType" : "application/json; charset=utf-8",
         "documentState" : "VALID"
       }
