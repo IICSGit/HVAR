@@ -6,17 +6,17 @@
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
-      <types1:Tags/>
+      <types1:Tags>.anonymous</types1:Tags>
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
       <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
       <types1:CreationDate>2022-06-06T21:55:31Z</types1:CreationDate>
       <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
-      <types1:ModificationDate>2022-06-06T22:01:51Z</types1:ModificationDate>
+      <types1:ModificationDate>2022-06-07T14:34:01Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
-      <types1:PublicationDate>2022-06-06T22:01:59Z</types1:PublicationDate>
+      <types1:PublicationDate>2022-06-07T14:34:11Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p_main_gitpipeline/p_main_gitpipeline.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -29,7 +29,7 @@
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
             <description/>
-            <tags/>
+            <tags>.anonymous</tags>
             <generator>Informatica Process Designer 11</generator>
             <input>
                <parameter description="" name="in_person" type="string">
@@ -41,21 +41,30 @@
             <notes/>
             <deployment suspendOnFault="false" tracingLevel="none">
                <rest>
-                  <allowedUsers>
-                     <user>leonardo.vieira@latampartners-dev.org</user>
-                  </allowedUsers>
+                  <allowAnonymousAccess/>
                </rest>
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="l439u1fx" targetId="l439u1fw"/>
+                  <link id="l4499jbf" targetId="l4499jbe"/>
                </start>
+               <assignment id="l4499jbe">
+                  <title>Assignment to in_person</title>
+                  <operation source="formula" to="input.in_person">
+                     <expression language="XQuery">''</expression>
+                  </operation>
+                  <link id="l4499jbg" targetId="l439u1fw"/>
+               </assignment>
                <service id="l439u1fw">
                   <title>get_pipeline</title>
                   <serviceName>cn-pipeline:get_pipeline</serviceName>
                   <serviceGUID>aVwr4auu76AdNY2M89qwQe</serviceGUID>
                   <serviceInput>
-                     <parameter name="person" source="constant">{$input.in_person}</parameter>
+                     <parameter name="person" source="formula">
+                        <expression language="XQuery">util:toJSON(&lt;root&gt;&lt;nome&gt;{$input.in_person}&lt;/nome&gt;&lt;/root&gt;)
+
+</expression>
+                     </parameter>
                   </serviceInput>
                   <link id="l439u1fy" targetId="c"/>
                </service>
@@ -69,9 +78,9 @@
                <ns1:CreatedBy>leonardo.vieira@latampartners-dev.org</ns1:CreatedBy>
                <ns1:CreationDate>2022-06-06T21:59:18Z</ns1:CreationDate>
                <ns1:ModifiedBy>leonardo.vieira@latampartners-dev.org</ns1:ModifiedBy>
-               <ns1:ModifiedDate>2022-06-06T22:01:25Z</ns1:ModifiedDate>
+               <ns1:ModifiedDate>2022-06-07T14:32:00Z</ns1:ModifiedDate>
                <ns1:Data format="json">{
-	"in_person": "Teste"
+	"in_person": "Test"
 }</ns1:Data>
             </ns1:SampleData>
          </ns1:sample-data-sets>
@@ -79,5 +88,5 @@
       <types1:GUID>gCObPIbnDueiarTaacTGcd</types1:GUID>
       <types1:DisplayName>p_main_gitpipeline</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-06-06T22:11:53.354Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-06-07T14:35:44.004Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
