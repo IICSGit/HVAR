@@ -4,7 +4,7 @@
       <types1:EntryId>1ESyIRJi4tciSrZ-gt-29031162-2022-06-06T21:55:30.84Z::pd.xml</types1:EntryId>
       <types1:Name>p_main_gitpipeline</types1:Name>
       <types1:MimeType>application/xml+process</types1:MimeType>
-      <types1:Description>Pacote de Teste v1</types1:Description>
+      <types1:Description>Pacote de Teste v2</types1:Description>
       <types1:AppliesTo/>
       <types1:Tags>.anonymous</types1:Tags>
       <types1:VersionLabel>1.0</types1:VersionLabel>
@@ -13,10 +13,10 @@
       <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
       <types1:CreationDate>2022-06-06T21:55:31Z</types1:CreationDate>
       <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
-      <types1:ModificationDate>2022-06-07T17:05:57Z</types1:ModificationDate>
+      <types1:ModificationDate>2022-06-07T20:36:03Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
-      <types1:PublicationDate>2022-06-07T17:06:10Z</types1:PublicationDate>
+      <types1:PublicationDate>2022-06-07T20:36:10Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p_main_gitpipeline/p_main_gitpipeline.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -28,7 +28,7 @@
                   overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
-            <description>Pacote de Teste v1</description>
+            <description>Pacote de Teste v2</description>
             <tags>.anonymous</tags>
             <generator>Informatica Process Designer 11</generator>
             <input>
@@ -51,7 +51,7 @@
                <assignment id="l4499jbe">
                   <title>Assignment to in_person</title>
                   <operation source="formula" to="input.in_person">
-                     <expression language="XQuery">''</expression>
+                     <expression language="XQuery">'Teste'</expression>
                   </operation>
                   <link id="l4499jbg" targetId="l439u1fw"/>
                </assignment>
@@ -88,5 +88,5 @@
       <types1:GUID>gCObPIbnDueiarTaacTGcd</types1:GUID>
       <types1:DisplayName>p_main_gitpipeline</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-06-07T17:42:28.249Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-06-07T20:38:00.542Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
