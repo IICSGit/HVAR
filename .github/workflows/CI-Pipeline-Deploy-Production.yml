@@ -1,0 +1,143 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI-Pipeline-Deploy-Weekly
+
+# Controls when the workflow will run
+on:
+  pull_request:
+    branches: [ "release" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Validate-Project-Assets:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v22.2
+    
+      - name: List all changed files
+        run: |
+          echo "### Go to Deployment! :construction:" >> $GITHUB_STEP_SUMMARY
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed" 
+            echo $file | rev
+            IN=$(echo $file | rev)
+            mails=$(echo $IN | tr "." "\n")
+            for addr in $mails
+            do
+                echo "> [$addr]"
+                echo [$addr] | rev
+            done
+          done
+          
+      - name: List files Name
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed" 
+            IN=$(echo $file | rev)
+            mails=$(echo $IN | tr "/" "\n")
+            echo "${mails[0]} file name"
+            echo "${mails[1]} path name"
+            echo "${mails[2]} extensio"
+          done          
+      - name: Validate File Name
+        run: |
+          count=0
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            file=$(echo $file | rev)
+            fileName="$(echo $file | cut -d'/' -f1 | rev)"
+            fileType="$(echo $fileName | cut -d'.' -f2)"
+            echo "------------------------------------------"
+            echo "Nome do Arquivo $fileName"
+            case $fileType in
+              PROCESS)
+                echo "Tipo do Arquivo Processo"
+                if [[ "$fileName" == p_* ]]
+                then
+                      echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
+                      echo "$fileName" >> $GITHUB_STEP_SUMMARY
+                      echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
+                      (( count+=1 ))
+                fi                
+                ;;
+              AI_CONNECTION)
+                if [[ "$fileName" != cn-* ]]
+                then
+                      echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
+                      echo "$fileName" >> $GITHUB_STEP_SUMMARY
+                      echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
+                      (( count+=1 ))
+                fi                
+                ;;
+              AI_SERVICE_CONNECTOR)
+                if [[ $fileName == sc_* ]]
+                then
+                      echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
+                      echo "$fileName" >> $GITHUB_STEP_SUMMARY
+                      echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
+                      (( count+=1 ))
+                fi
+                ;;
+            esac
+            echo "------------------------------------------"
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "$count" >> $GITHUB_STEP_SUMMARY
+
+      - name: Validate Description
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            content=$(grep types1:Description $file  | grep -v '<?xml' | grep '<types1:Description>'  | head -n 2 | awk 'NR==1 {print $1}' | cut -d'>' -f 2)
+            if [ -z "$content" ]
+            then
+                  echo "::warning file=$file,line=1,col=5,endColumn=7::Missing Description"
+                  echo "$file" >> $GITHUB_STEP_SUMMARY
+                  echo "- Missing Description!" >> $GITHUB_STEP_SUMMARY
+            fi
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+        
+  deploy-dev:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment:
+      name: Development
+      url: 'http://www.google.com.br'
+    needs: Validate-Project-Assets      
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, deploy in Dev.
+
+      - name: Display the path
+        run: |
+          import os
+          print(os.environ['PATH'])
+        shell: python        
+        
+        
+  deploy-prd:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: 'http://www.google.com'
+    needs: deploy-dev
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, deploy in Prd.
