@@ -19,13 +19,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world
-  changed-files:
-    runs-on: ubuntu-latest  # windows-latest | macos-latest
-    name: Validate Files
-    steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
@@ -115,7 +108,7 @@ jobs:
             fi
             echo "" >> $GITHUB_STEP_SUMMARY
           done
-          
+        
   deploy-dev:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
