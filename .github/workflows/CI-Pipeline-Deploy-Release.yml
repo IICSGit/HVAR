@@ -108,14 +108,45 @@ jobs:
             fi
             echo "" >> $GITHUB_STEP_SUMMARY
           done
-        
+  # This workflow contains a single job called "build"
+  Validate-Projects-Connections:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment:
+      name: Development
+    needs: Validate-Project-Assets 
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v22.2
+    
+      - name: List all changed files
+        run: |
+          echo "### Go to Deployment! :construction:" >> $GITHUB_STEP_SUMMARY
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed" 
+            echo $file | rev
+            IN=$(echo $file | rev)
+            mails=$(echo $IN | tr "." "\n")
+            for addr in $mails
+            do
+                echo "> [$addr]"
+                echo [$addr] | rev
+            done
+          done
+          
   deploy-release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment:
       name: Development
-      url: 'http://www.google.com.br'
-    needs: Validate-Project-Assets      
+    needs: Validate-Projects-Connections      
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a single command using the runners shell
