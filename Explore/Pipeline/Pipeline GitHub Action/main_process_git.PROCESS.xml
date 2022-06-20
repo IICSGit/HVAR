@@ -4,7 +4,7 @@
       <types1:EntryId>LYvtpeFRqXpIW7W-gt-6342687-2022-06-20T16:07:55.606Z::pd.xml</types1:EntryId>
       <types1:Name>main_process_git</types1:Name>
       <types1:MimeType>application/xml+process</types1:MimeType>
-      <types1:Description/>
+      <types1:Description>Version 1</types1:Description>
       <types1:AppliesTo/>
       <types1:Tags/>
       <types1:VersionLabel>1.0</types1:VersionLabel>
@@ -12,10 +12,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
       <types1:CreationDate>2022-06-20T16:07:56Z</types1:CreationDate>
-      <types1:ModifiedBy/>
+      <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-20T19:09:04Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
-      <types1:PublicationDate>2022-06-20T17:59:24Z</types1:PublicationDate>
+      <types1:PublicationDate>2022-06-20T19:09:15Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.main_process_git/main_process_git.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -27,7 +28,7 @@
                   overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
-            <description/>
+            <description>Version 1</description>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
             <notes/>
@@ -45,5 +46,5 @@
       <types1:GUID>79EwtAuwkkvkWnPt9FNVSl</types1:GUID>
       <types1:DisplayName>main_process_git</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-06-20T18:00:47.832Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-06-20T19:09:37.555Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
