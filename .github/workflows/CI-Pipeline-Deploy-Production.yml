@@ -1,9 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI-Pull-IICS-PRD
+name: CI-Pipeline-Deploy-Production
 
 # Controls when the workflow will run
 on:
+  pull_request:
+    branches: [ "master" ]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -15,8 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     
     environment:
-      name: Development
-      url: 'https://iicssaas.requestcatcher.com/'
+      name: Production
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,7 +29,7 @@ jobs:
       - name: Run get last commited hash
         run: echo Last Commited Hash ${{ github.sha }}
 
-      - name: Login IICS Development
+      - name: Login IICS Production
         id: myRequest
         uses: fjogeleit/http-request-action@v1
         with:
