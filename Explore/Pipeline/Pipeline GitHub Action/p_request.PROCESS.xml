@@ -28,7 +28,7 @@
                   overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
-            <description>Version 5</description>
+            <description>Version 6</description>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
             <notes/>
