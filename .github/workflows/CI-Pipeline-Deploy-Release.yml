@@ -59,7 +59,9 @@ jobs:
             file=$(echo $file | rev)
             fileName="$(echo $file | cut -d'/' -f1 | rev)"
             fileType="$(echo $fileName | cut -d'.' -f2)"
+            fileExtension="$(echo $fileName | cut -d'.' -f3)"
             echo "------------------------------------------"
+            echo $fileExtension
             echo "Nome do Arquivo $fileName"
             case $fileType in
               PROCESS)
