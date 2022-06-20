@@ -5,7 +5,7 @@ name: CI-Pipeline-Deploy-Weekly
 # Controls when the workflow will run
 on:
   pull_request:
-    branches: [ "release" ]
+    branches: [ "develepor" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
