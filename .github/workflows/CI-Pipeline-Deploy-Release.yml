@@ -126,20 +126,8 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v22.2
     
-      - name: List all changed files
-        run: |
-          echo "### Go to Deployment! :construction:" >> $GITHUB_STEP_SUMMARY
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed" 
-            echo $file | rev
-            IN=$(echo $file | rev)
-            mails=$(echo $IN | tr "." "\n")
-            for addr in $mails
-            do
-                echo "> [$addr]"
-                echo [$addr] | rev
-            done
-          done
+      - name: List all changed connections
+        run: echo "connections"
           
   deploy-release:
     # The type of runner that the job will run on
