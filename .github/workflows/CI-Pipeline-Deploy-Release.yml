@@ -61,8 +61,8 @@ jobs:
             fileType="$(echo $fileName | cut -d'.' -f2)"
             fileExtension="$(echo $fileName | cut -d'.' -f3)"
             echo "------------------------------------------"
-#            echo $fileExtension 
-#            echo "Nome do Arquivo $fileName"
+            # echo $fileExtension 
+            # echo "Nome do Arquivo $fileName"
             if [[ "$fileExtension" == XML ]]
             then            
                 case $fileType in
