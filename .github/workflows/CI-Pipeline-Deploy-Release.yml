@@ -61,14 +61,14 @@ jobs:
             fileType="$(echo $fileName | cut -d'.' -f2)"
             fileExtension="$(echo $fileName | cut -d'.' -f3)"
             echo "------------------------------------------"
-            echo $fileExtension
-            echo "Nome do Arquivo $fileName"
+#            echo $fileExtension 
+#            echo "Nome do Arquivo $fileName"
             if [[ "$fileExtension" == XML ]]
             then            
                 case $fileType in
                   PROCESS)
                     echo "Tipo do Arquivo Processo"
-                    if [[ "$fileName" != p_* ]]
+                    if [[ "$fileName" == p_* ]]
                     then
                           echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
                           echo "$fileName" >> $GITHUB_STEP_SUMMARY
