@@ -59,38 +59,43 @@ jobs:
             file=$(echo $file | rev)
             fileName="$(echo $file | cut -d'/' -f1 | rev)"
             fileType="$(echo $fileName | cut -d'.' -f2)"
+            fileExtension="$(echo $fileName | cut -d'.' -f3)"
             echo "------------------------------------------"
-            echo "Nome do Arquivo $fileName"
-            case $fileType in
-              PROCESS)
-                echo "Tipo do Arquivo Processo"
-                if [[ "$fileName" != p_* ]]
-                then
-                      echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
-                      echo "$fileName" >> $GITHUB_STEP_SUMMARY
-                      echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
-                      (( count+=1 ))
-                fi                
-                ;;
-              AI_CONNECTION)
-                if [[ "$fileName" != cn-* ]]
-                then
-                      echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
-                      echo "$fileName" >> $GITHUB_STEP_SUMMARY
-                      echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
-                      (( count+=1 ))
-                fi                
-                ;;
-              AI_SERVICE_CONNECTOR)
-                if [[ $fileName != sc_* ]]
-                then
-                      echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
-                      echo "$fileName" >> $GITHUB_STEP_SUMMARY
-                      echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
-                      (( count+=1 ))
-                fi
-                ;;
-            esac
+            # echo $fileExtension 
+            # echo "Nome do Arquivo $fileName"
+            if [[ "$fileExtension" == xml ]]
+            then            
+                case $fileType in
+                  PROCESS)
+                    echo "Tipo do Arquivo Processo"
+                    if [[ "$fileName" == p_* ]]
+                    then
+                          echo "::notice file=$fileName::Invalid Name"
+                          echo "$fileName" >> $GITHUB_STEP_SUMMARY
+                          echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
+                          (( count+=1 ))
+                    fi                
+                    ;;
+                  AI_CONNECTION)
+                    if [[ "$fileName" != cn-* ]]
+                    then
+                          echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
+                          echo "$fileName" >> $GITHUB_STEP_SUMMARY
+                          echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
+                          (( count+=1 ))
+                    fi                
+                    ;;
+                  AI_SERVICE_CONNECTOR)
+                    if [[ $fileName != sc_* ]]
+                    then
+                          echo "::notice file=$fileName,line=1,col=5,endColumn=7::Invalid Name"
+                          echo "$fileName" >> $GITHUB_STEP_SUMMARY
+                          echo "- Invalid Name!" >> $GITHUB_STEP_SUMMARY
+                          (( count+=1 ))
+                    fi
+                    ;;
+                esac
+            fi
             echo "------------------------------------------"
             echo "" >> $GITHUB_STEP_SUMMARY
           done
