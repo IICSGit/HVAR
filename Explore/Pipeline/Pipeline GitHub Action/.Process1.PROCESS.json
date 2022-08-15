@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "2ST8keuThp9kgK7oVAej46",
+    "name" : "Process1",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hNeJ91pqrzYLnzY-gt-19475338-2022-06-28T21:18:34.128Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Versão Deploy 1",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}
