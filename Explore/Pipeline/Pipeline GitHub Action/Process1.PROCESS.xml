@@ -1,39 +1,38 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>4Cf5GkeHy2uI5CU-gt-32784355-2022-06-07T15:04:37.891Z::pd.xml</types1:EntryId>
-      <types1:Name>p_request</types1:Name>
+      <types1:EntryId>hNeJ91pqrzYLnzY-gt-19475338-2022-06-28T21:18:34.128Z::pd.xml</types1:EntryId>
+      <types1:Name>Process1</types1:Name>
       <types1:MimeType>application/xml+process</types1:MimeType>
-      <types1:Description>Version 7</types1:Description>
+      <types1:Description>Versão Deploy 1</types1:Description>
       <types1:AppliesTo/>
-      <types1:Tags/>
+      <types1:Tags>.anonymous</types1:Tags>
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
       <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
-      <types1:CreationDate>2022-06-07T15:04:38Z</types1:CreationDate>
+      <types1:CreationDate>2022-06-28T21:18:34Z</types1:CreationDate>
       <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
-      <types1:ModificationDate>2022-08-15T22:24:45Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
-      <types1:PublicationDate>2022-08-15T22:24:54Z</types1:PublicationDate>
-      <types1:PublishedContributionId>project:/spi.p_request/p_request.pd.xml</types1:PublishedContributionId>
+      <types1:ModificationDate>2022-08-15T22:11:28Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
                   xmlns:list="urn:activevos:spi:list:functions"
-                  displayName="p_request"
-                  name="p_request"
+                  displayName="Process1"
+                  name="Process1"
                   overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
-            <description>Version 7</description>
-            <tags/>
+            <description>Versão Deploy 1</description>
+            <tags>.anonymous</tags>
             <generator>Informatica Process Designer 11</generator>
             <notes/>
             <deployment suspendOnFault="false" tracingLevel="none">
-               <rest/>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
             </deployment>
             <flow id="a">
                <start id="b">
@@ -44,18 +43,18 @@
          </process>
          <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
             <ns1:SampleData>
-               <ns1:Id>9f8aca0f-06c5-48d8-8961-650a07e094df</ns1:Id>
+               <ns1:Id>f797ddcf-cd17-42cf-8d96-19b267e00ade</ns1:Id>
                <ns1:Name>Run</ns1:Name>
                <ns1:CreatedBy>leonardo.vieira@latampartners-dev.org</ns1:CreatedBy>
-               <ns1:CreationDate>2022-06-28T21:17:14Z</ns1:CreationDate>
+               <ns1:CreationDate>2022-06-28T21:19:11Z</ns1:CreationDate>
                <ns1:ModifiedBy>leonardo.vieira@latampartners-dev.org</ns1:ModifiedBy>
-               <ns1:ModifiedDate>2022-06-28T21:17:14Z</ns1:ModifiedDate>
+               <ns1:ModifiedDate>2022-06-28T21:19:11Z</ns1:ModifiedDate>
                <ns1:Data format="json">{}</ns1:Data>
             </ns1:SampleData>
          </ns1:sample-data-sets>
       </types1:Entry>
-      <types1:GUID>0q4eWrOblmsf3OfxhmcH61</types1:GUID>
-      <types1:DisplayName>p_request</types1:DisplayName>
+      <types1:GUID>2ST8keuThp9kgK7oVAej46</types1:GUID>
+      <types1:DisplayName>Process1</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-08-15T22:25:24.677Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-08-15T22:12:01.078Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
