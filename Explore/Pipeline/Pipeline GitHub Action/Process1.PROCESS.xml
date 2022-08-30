@@ -3,8 +3,9 @@
    <types1:Item>
       <types1:EntryId>hNeJ91pqrzYLnzY-gt-19475338-2022-06-28T21:18:34.128Z::pd.xml</types1:EntryId>
       <types1:Name>Process1</types1:Name>
+      <types1:ParentFlowIds>4Cf5GkeHy2uI5CU-gt-32784355-2022-06-07T15:04:37.891Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
-      <types1:Description>Versão Deploy 1</types1:Description>
+      <types1:Description>Versão Deploy 2</types1:Description>
       <types1:AppliesTo/>
       <types1:Tags>.anonymous</types1:Tags>
       <types1:VersionLabel>1.0</types1:VersionLabel>
@@ -13,8 +14,11 @@
       <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
       <types1:CreationDate>2022-06-28T21:18:34Z</types1:CreationDate>
       <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
-      <types1:ModificationDate>2022-08-15T22:11:28Z</types1:ModificationDate>
-      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:ModificationDate>2022-08-30T21:04:29Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
+      <types1:PublicationDate>2022-08-30T21:04:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process1/Process1.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
@@ -25,9 +29,16 @@
                   overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
-            <description>Versão Deploy 1</description>
+            <description>Versão Deploy 2</description>
             <tags>.anonymous</tags>
             <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_pipeline" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
             <notes/>
             <deployment suspendOnFault="false" tracingLevel="none">
                <rest>
@@ -36,9 +47,38 @@
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="link1" targetId="c"/>
+                  <link id="l7godbtl" targetId="l7godbtk"/>
                </start>
-               <end id="c"/>
+               <assignment id="l7godbtk">
+                  <title>Assignment to tmp_pipeline</title>
+                  <operation source="constant" to="temp.tmp_pipeline">1</operation>
+                  <link id="l7godbtr" targetId="l7godbtq"/>
+               </assignment>
+               <container id="l7godbtq" type="exclusive">
+                  <title>tmp_pipeline</title>
+                  <flow id="l7godbtu">
+                     <assignment id="l7godbum">
+                        <title>Assignment to tmp_pipeline</title>
+                        <operation source="constant" to="temp.tmp_pipeline">1+1</operation>
+                        <link id="l7godbun" targetId="l7godbui"/>
+                     </assignment>
+                     <jumpTo id="l7godbui">
+                        <link id="l7godbuj" targetId="l7godbtq"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="l7godbtx">
+                     <end id="l7godbu7"/>
+                  </flow>
+                  <link id="l7godbtt" targetId="l7godbtu" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_pipeline}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7godbtw" targetId="l7godbtx" type="containerLink"/>
+               </container>
             </flow>
          </process>
          <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
@@ -56,5 +96,5 @@
       <types1:GUID>2ST8keuThp9kgK7oVAej46</types1:GUID>
       <types1:DisplayName>Process1</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-08-15T22:12:01.078Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-08-30T21:05:24.488Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
