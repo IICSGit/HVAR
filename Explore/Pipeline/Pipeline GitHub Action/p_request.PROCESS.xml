@@ -4,7 +4,7 @@
       <types1:EntryId>4Cf5GkeHy2uI5CU-gt-32784355-2022-06-07T15:04:37.891Z::pd.xml</types1:EntryId>
       <types1:Name>p_request</types1:Name>
       <types1:MimeType>application/xml+process</types1:MimeType>
-      <types1:Description>Version 1.0.3</types1:Description>
+      <types1:Description>Version 1.0.4</types1:Description>
       <types1:AppliesTo/>
       <types1:Tags/>
       <types1:VersionLabel>1.0</types1:VersionLabel>
@@ -13,10 +13,10 @@
       <types1:CreatedBy>leonardo.vieira@latampartners-dev.org</types1:CreatedBy>
       <types1:CreationDate>2022-06-07T15:04:38Z</types1:CreationDate>
       <types1:ModifiedBy>leonardo.vieira@latampartners-dev.org</types1:ModifiedBy>
-      <types1:ModificationDate>2022-08-30T21:01:25Z</types1:ModificationDate>
-      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:ModificationDate>2022-08-31T01:13:52Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>leonardo.vieira@latampartners-dev.org</types1:PublishedBy>
-      <types1:PublicationDate>2022-08-30T21:01:32Z</types1:PublicationDate>
+      <types1:PublicationDate>2022-08-31T01:13:57Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p_request/p_request.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -28,18 +28,103 @@
                   overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
-            <description>Version 1.0.3</description>
+            <description>Version 1.0.4</description>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_process_git" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
             <notes/>
             <deployment suspendOnFault="false" tracingLevel="none">
                <rest/>
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="link1" targetId="c"/>
+                  <link id="l7go4vcb" targetId="l7go4vca"/>
                </start>
-               <end id="c"/>
+               <assignment id="l7go4vca">
+                  <title>Assignment to tmp_process_git</title>
+                  <operation source="constant" to="temp.tmp_process_git">1</operation>
+                  <link id="l7go4vci" targetId="l7go4vch"/>
+               </assignment>
+               <container id="l7go4vch" type="exclusive">
+                  <title>tmp_process_git</title>
+                  <flow id="l7go4vcl">
+                     <wait id="l7go4vd4">
+                        <title>Wait 1 Min</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">1</arg>
+                              <arg name="scale">M</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="l7go4vdm" targetId="l7go4vdl"/>
+                     </wait>
+                     <assignment id="l7go4vdl">
+                        <title>Assignment to tmp_process_after_time</title>
+                        <operation source="constant" to="temp.tmp_process_git"/>
+                        <link id="l7go4vdn" targetId="l7go4vd8"/>
+                     </assignment>
+                     <assignment id="l7gxcx05">
+                        <title>Assignment to tmp_process_git</title>
+                        <operation source="constant" to="temp.tmp_process_git">1</operation>
+                        <link id="l7gxcx07" targetId="l7go4vd1"/>
+                     </assignment>
+                     <container id="l7go4vd8" type="parallel">
+                        <title>Parallel Paths 1</title>
+                        <flow id="l7go4vdc">
+                           <subflow id="l7go4ve6">
+                              <title>Process1</title>
+                              <subflowGUID>2ST8keuThp9kgK7oVAej46</subflowGUID>
+                              <subflowPath>Process1</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input/>
+                              <outputDef/>
+                           </subflow>
+                           <link id="l7go4vdd" targetId="l7go4vd8" type="containerLink"/>
+                        </flow>
+                        <flow id="l7go4vdf">
+                           <subflow id="l7go4vec">
+                              <title>Process1</title>
+                              <subflowGUID>2ST8keuThp9kgK7oVAej46</subflowGUID>
+                              <subflowPath>Process1</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input/>
+                              <outputDef/>
+                           </subflow>
+                           <link id="l7go4vdg" targetId="l7go4vd8" type="containerLink"/>
+                        </flow>
+                        <link id="l7go4vdb" targetId="l7go4vdc" type="containerLink"/>
+                        <link id="l7gxcx06" targetId="l7gxcx05"/>
+                        <link id="l7go4vde" targetId="l7go4vdf" type="containerLink"/>
+                     </container>
+                     <end id="l7go4vd1"/>
+                  </flow>
+                  <flow id="l7go4vco">
+                     <throw id="l7go4vcv">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">404</parameter>
+                           <parameter name="detail" source="constant" updatable="true">Fale</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Erros</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l7go4vck" targetId="l7go4vcl" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_process_git}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7go4vcn" targetId="l7go4vco" type="containerLink"/>
+               </container>
             </flow>
          </process>
          <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
@@ -57,5 +142,5 @@
       <types1:GUID>0q4eWrOblmsf3OfxhmcH61</types1:GUID>
       <types1:DisplayName>p_request</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-08-30T21:04:09.092Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-08-31T01:14:23.838Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
